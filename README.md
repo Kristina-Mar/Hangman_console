@@ -1,1 +1,1 @@
-# Hangman_console
+# C# console game of Hangman. The player guesses the letters by pushing keyborad keys. The game checks if the player guesses only letters or tries to guess the same letter multiple times.
