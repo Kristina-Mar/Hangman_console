@@ -10,20 +10,23 @@ namespace Hangman_console
     {
         public static void StartGame()
         {
-            WordsToBeGuessed.PickAWord();
-            Console.Write($"Guess the {WordsToBeGuessed.category}: ");
-            for (int i = 0; i < WordGuessing.GuessedWord.Length; i++)
-            // The program first writes out the guessed word in underscores - the player knows the word length.
-            {
-                WordGuessing.UncoveredGuessedWord[i] = '_';
-            }
-            Console.Write(WordGuessing.UncoveredGuessedWord);
+            WordsToBeGuessed newWord = new WordsToBeGuessed();
+            newWord.PickAWord();
+            WordGuessing wordGuessing = new WordGuessing(newWord.ChosenWord);
+            Player player = new Player();
+            Console.Write($"Guess the {newWord.Category}: ");
+            wordGuessing.ShowGuessedWordUnderscores();
+            Console.Write(wordGuessing.UncoveredGuessedWord); // Method without the parameter writes out the word in underscores.
             Console.WriteLine();
-            while (Player.NumberOfWrongGuesses < Player.MaxNumberOfWrongGuesses)
+            while (player.NumberOfWrongGuesses < player.MaxNumberOfWrongGuesses)
             {
-                Player.LetterGuess();
-                WordGuessing.UncoverGuessedWord(Player.GuessedLetter);
-                if (!WordGuessing.UncoveredGuessedWord.Contains('_'))
+                player.LetterGuess();
+                if (!wordGuessing.DoesWordIncludeGuessedLetter(player.GuessedLetter))
+                {
+                    player.NumberOfWrongGuesses++;
+                }
+                Console.WriteLine(wordGuessing.UncoveredGuessedWord);
+                if (!wordGuessing.UncoveredGuessedWord.Contains('_'))
                 // When all the undersocres are replaced with correctly guessed letters, the game is won.
                 {
                     Console.WriteLine("You win!");

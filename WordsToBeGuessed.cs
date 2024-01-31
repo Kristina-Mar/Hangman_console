@@ -9,23 +9,23 @@ namespace Hangman_console
 {
     internal class WordsToBeGuessed
     {
-        public static string category = string.Empty;
-        public static string[] animals = { "ORANGUTAN", "ELEPHANT", "CROCODILE", "PLATYPUS", "BUTTERFLY", "GIRAFFE", "ANTEATER", "PENGUIN", "ANGLERFISH", "SEAHORSE", "CHEETAH", "MOSQUITO", "ALPACA", "CHICKEN", "BUFFALO", "PEACOCK" };
-        public static string[] countries = { "TAJIKISTAN", "PARAGUAY", "BULGARIA", "INDONESIA", "LITHUANIA", "ARGENTINA", "MONGOLIA", "AZERBAIJAN", "SINGAPORE", "BAHRAIN", "LESOTHO", "MOZAMBIQUE", "TANZANIA", "ETHIOPIA", "BOTSWANA", "GUATEMALA" };
-        public static string[][] allWords = { animals, countries };
-        public static string chosenWord = string.Empty;
-        private static Random randomNumberGenerator = new Random();
-        public static void PickAWord()
+        public string Category = string.Empty;
+        private string[] animals = { "ORANGUTAN", "ELEPHANT", "CROCODILE", "PLATYPUS", "BUTTERFLY", "GIRAFFE", "ANTEATER", "PENGUIN", "ANGLERFISH", "SEAHORSE", "CHEETAH", "MOSQUITO", "ALPACA", "CHICKEN", "BUFFALO", "PEACOCK" };
+        private string[] countries = { "TAJIKISTAN", "PARAGUAY", "BULGARIA", "INDONESIA", "LITHUANIA", "ARGENTINA", "MONGOLIA", "AZERBAIJAN", "SINGAPORE", "BAHRAIN", "LESOTHO", "MOZAMBIQUE", "TANZANIA", "ETHIOPIA", "BOTSWANA", "GUATEMALA" };
+        public string ChosenWord = string.Empty;
+        private Random randomNumberGenerator = new Random();
+        public void PickAWord()
         {
+            string[][] allWords = { animals, countries };
             int arrayNumber = randomNumberGenerator.Next(allWords.Length);
             int wordNumber = randomNumberGenerator.Next(allWords[arrayNumber].Length);
-            chosenWord = allWords[arrayNumber][wordNumber];
+            ChosenWord = allWords[arrayNumber][wordNumber];
             switch (arrayNumber)
             {
-                case 0: category = "animal";
+                case 0: Category = "animal";
                     break;
                 case 1:
-                    category = "country";
+                    Category = "country";
                     break;
                 default:
                     break;

@@ -9,11 +9,25 @@ namespace Hangman_console
 {
     internal class WordGuessing
     {
-        public static char[] GuessedWord = WordsToBeGuessed.chosenWord.ToCharArray();
-        public static char[] UncoveredGuessedWord = new char[GuessedWord.Length];
-        public static void UncoverGuessedWord (char guessedLetter)
+        private char[] GuessedWord;
+        public char[] UncoveredGuessedWord;
+        public WordGuessing(string newWord)
         {
-            if (GuessedWord.Contains(Player.GuessedLetter))
+            GuessedWord = newWord.ToCharArray();
+            UncoveredGuessedWord = new char[GuessedWord.Length];
+        }
+
+        public void ShowGuessedWordUnderscores()
+        {
+            for (int i = 0; i < GuessedWord.Length; i++)
+            // The program first writes out the guessed word in underscores - the player knows the word length.
+            {
+                UncoveredGuessedWord[i] = '_';
+            }
+        }
+        public bool DoesWordIncludeGuessedLetter (char guessedLetter)
+        {
+            if (GuessedWord.Contains(guessedLetter))
             {
                 for (int i = 0; i < GuessedWord.Length; i++)
                 {
@@ -22,12 +36,12 @@ namespace Hangman_console
                         UncoveredGuessedWord[i] = guessedLetter;
                     }
                 }
+                return true;
             }
             else
             {
-                Player.NumberOfWrongGuesses++;
+                return false;
             }
-            Console.WriteLine(UncoveredGuessedWord);
         }
     }
 }
