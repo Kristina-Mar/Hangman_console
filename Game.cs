@@ -12,11 +12,10 @@ namespace Hangman_console
         {
             WordsToBeGuessed newWord = new WordsToBeGuessed();
             newWord.PickAWord();
-            WordGuessing wordGuessing = new WordGuessing(newWord.ChosenWord);
             Player player = new Player();
             Console.Write($"Guess the {newWord.Category}: ");
-            wordGuessing.ShowGuessedWordUnderscores();
-            Console.Write(wordGuessing.UncoveredGuessedWord); // Method without the parameter writes out the word in underscores.
+            WordGuessing wordGuessing = new WordGuessing(newWord.ChosenWord);
+            Console.Write(wordGuessing.UncoveredGuessedWord); // Writes out the word in underscores.
             Console.WriteLine();
             while (player.NumberOfWrongGuesses < player.MaxNumberOfWrongGuesses)
             {

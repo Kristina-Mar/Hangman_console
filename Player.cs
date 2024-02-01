@@ -14,12 +14,12 @@ namespace Hangman_console
     {
         public int MaxNumberOfWrongGuesses = 8;
         public int NumberOfWrongGuesses = 0;
-        private string GuessedLettersString = string.Empty;
+        private string guessedLettersString = string.Empty;
         public char[] GuessedLetters = { };
         public char GuessedLetter = '_';
         public void LetterGuess()
         {
-            GuessedLetters = GuessedLettersString.ToCharArray();
+            GuessedLetters = guessedLettersString.ToCharArray();
             GuessedLetter = '_';
             Console.WriteLine("Guess a letter.");
             GuessedLetter = Char.ToUpper(Console.ReadKey().KeyChar);
@@ -31,8 +31,8 @@ namespace Hangman_console
                 Console.WriteLine($"Guess again.");
                 GuessedLetter = Char.ToUpper(Console.ReadKey().KeyChar);
             }
-                GuessedLettersString += GuessedLetter;
-                GuessedLetters = GuessedLettersString.ToCharArray();
+                guessedLettersString += GuessedLetter;
+                GuessedLetters = guessedLettersString.ToCharArray();
                 Console.WriteLine();
                 Console.WriteLine($"Guessed letters: {String.Join(", ",GuessedLetters)}"); // Writes out the letters the player has already guessed.
         }

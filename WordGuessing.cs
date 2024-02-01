@@ -9,29 +9,25 @@ namespace Hangman_console
 {
     internal class WordGuessing
     {
-        private char[] GuessedWord;
+        private char[] guessedWord;
         public char[] UncoveredGuessedWord;
         public WordGuessing(string newWord)
         {
-            GuessedWord = newWord.ToCharArray();
-            UncoveredGuessedWord = new char[GuessedWord.Length];
-        }
-
-        public void ShowGuessedWordUnderscores()
-        {
-            for (int i = 0; i < GuessedWord.Length; i++)
-            // The program first writes out the guessed word in underscores - the player knows the word length.
+            guessedWord = newWord.ToCharArray();
+            UncoveredGuessedWord = new char[guessedWord.Length];
+            for (int i = 0; i < guessedWord.Length; i++)
+            // The program first shows the guessed word in underscores - the player knows the word length.
             {
                 UncoveredGuessedWord[i] = '_';
             }
         }
         public bool DoesWordIncludeGuessedLetter (char guessedLetter)
         {
-            if (GuessedWord.Contains(guessedLetter))
+            if (guessedWord.Contains(guessedLetter))
             {
-                for (int i = 0; i < GuessedWord.Length; i++)
+                for (int i = 0; i < guessedWord.Length; i++)
                 {
-                    if (GuessedWord[i] == guessedLetter) // Replaces the underscore with the correctly guessed letter.
+                    if (guessedWord[i] == guessedLetter) // Replaces the underscore with the correctly guessed letter.
                     {
                         UncoveredGuessedWord[i] = guessedLetter;
                     }
