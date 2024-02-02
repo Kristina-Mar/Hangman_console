@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -35,6 +36,17 @@ namespace Hangman_console
                 GuessedLetters = guessedLettersString.ToCharArray();
                 Console.WriteLine();
                 Console.WriteLine($"Guessed letters: {String.Join(", ",GuessedLetters)}"); // Writes out the letters the player has already guessed.
+        }
+        public bool IsAlive()
+        {
+            if (NumberOfWrongGuesses < MaxNumberOfWrongGuesses)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

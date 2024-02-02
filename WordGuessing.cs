@@ -39,5 +39,16 @@ namespace Hangman_console
                 return false;
             }
         }
+        public bool IsWordGuessed()
+        {
+            if (UncoveredGuessedWord.Contains('_'))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace Hangman_console
             WordGuessing wordGuessing = new WordGuessing(newWord.ChosenWord);
             Console.Write(wordGuessing.UncoveredGuessedWord); // Writes out the word in underscores.
             Console.WriteLine();
-            while (player.NumberOfWrongGuesses < player.MaxNumberOfWrongGuesses)
+            while (player.IsAlive())
             {
                 player.LetterGuess();
                 if (!wordGuessing.DoesWordIncludeGuessedLetter(player.GuessedLetter))
@@ -25,7 +25,7 @@ namespace Hangman_console
                     player.NumberOfWrongGuesses++;
                 }
                 Console.WriteLine(wordGuessing.UncoveredGuessedWord);
-                if (!wordGuessing.UncoveredGuessedWord.Contains('_'))
+                if (wordGuessing.IsWordGuessed())
                 // When all the undersocres are replaced with correctly guessed letters, the game is won.
                 {
                     Console.WriteLine("You win!");
