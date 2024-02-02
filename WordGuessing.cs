@@ -9,7 +9,7 @@ namespace Hangman_console
 {
     internal class WordGuessing
     {
-        private char[] guessedWord;
+        public char[] guessedWord;
         public char[] UncoveredGuessedWord;
         public WordGuessing(string newWord)
         {
