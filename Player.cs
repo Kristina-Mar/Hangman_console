@@ -13,7 +13,7 @@ namespace Hangman_console
 {
     internal class Player
     {
-        public int MaxNumberOfWrongGuesses = 8;
+        public int MaxNumberOfWrongGuesses = 7;
         public int NumberOfWrongGuesses = 0;
         private string guessedLettersString = string.Empty;
         public char[] GuessedLetters = { };
