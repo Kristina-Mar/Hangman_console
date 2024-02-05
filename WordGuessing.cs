@@ -9,13 +9,13 @@ namespace Hangman_console
 {
     internal class WordGuessing
     {
-        public char[] guessedWord;
+        public char[] GuessedWord;
         public char[] UncoveredGuessedWord;
         public WordGuessing(string newWord)
         {
-            guessedWord = newWord.ToCharArray();
-            UncoveredGuessedWord = new char[guessedWord.Length];
-            for (int i = 0; i < guessedWord.Length; i++)
+            GuessedWord = newWord.ToCharArray();
+            UncoveredGuessedWord = new char[GuessedWord.Length];
+            for (int i = 0; i < GuessedWord.Length; i++)
             // The program first shows the guessed word in underscores - the player knows the word length.
             {
                 UncoveredGuessedWord[i] = '_';
@@ -23,11 +23,11 @@ namespace Hangman_console
         }
         public bool DoesWordIncludeGuessedLetter (char guessedLetter)
         {
-            if (guessedWord.Contains(guessedLetter))
+            if (GuessedWord.Contains(guessedLetter))
             {
-                for (int i = 0; i < guessedWord.Length; i++)
+                for (int i = 0; i < GuessedWord.Length; i++)
                 {
-                    if (guessedWord[i] == guessedLetter) // Replaces the underscore with the correctly guessed letter.
+                    if (GuessedWord[i] == guessedLetter) // Replaces the underscore with the correctly guessed letter.
                     {
                         UncoveredGuessedWord[i] = guessedLetter;
                     }

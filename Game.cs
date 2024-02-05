@@ -32,7 +32,7 @@ namespace Hangman_console
                     return;
                 }
             }
-            Console.WriteLine($"Game over. The word was {String.Join("",wordGuessing.guessedWord)}."); // When the player uses up their incorrect guesses, the game is over.
+            Console.WriteLine($"Game over. The word was {String.Join("",wordGuessing.GuessedWord)}."); // When the player uses up their incorrect guesses, the game is over.
             return;
         }
     }
